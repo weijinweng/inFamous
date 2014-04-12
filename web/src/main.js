@@ -159,13 +159,20 @@ define(function(require, exports, module) {
     });
     
 
-    websiteSubmitButton.on('click',function(e){
+	//event handler
+	var eventHandlerA = new EventHandler();
+	var eventHandlerB = new EventHandler();
+	var message = 'noNewWebsite';
+	
+    websiteSubmitButton.on('click',function(){
         if(websiteName.getValue() !== "")
         {
-            alert('hi');
-            webEditorMod.setOrigin([0,0],{duration:1000,curve:Easing.inBounce});
+            eventHandlerA.emit('createNewWebSite',websiteName.getValue());
+			message = 'newWebsite';
+            //webEditorMod.setOrigin([0,0],{duration:1000,curve:Easing.inBounce});
         }
     });
+	eventHandlerB.subscribe(eventHandlerA);
 
     
     var iPadContainerMod = new Modifier({
@@ -290,14 +297,22 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
             size:[CurrentContext.getSize()[0],CurrentContext.getSize()[1]],
     });
     
-    var webEditorMod = new Modifier({
-        origin:[-1,0]
+    var toolBackgroundMod = new Modifier({
+        transform: Transform.rotateX(Math.PI)
     });
 
     var editingTools = new View({
     });
+	
+	var webPosMod = new Modifier({
+		transform: Transform.translate(140,0,1)
+	});
+	
+	var webEditorMod = new Modifier({
+		transform: Transform.rotateX(Math.PI)
+	});
     
-    var toolsBackGround = new Surface({
+    var toolsBackground = new Surface({
                     size:[80, undefined],
                     properties:
                     {
@@ -307,16 +322,16 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
                         lineHeight:'20px'
                     }
     });
-    editingTools.add(webEditorMod).add(toolsBackGround);
+    editingTools.add(webPosMod).add(toolBackgroundMod).add(toolsBackground);
     webEditor.add(editingTools);
-    CurrentContext.add(webEditorMod).add(webEditor);
+   
     
 	//Editor Tool docks
 	
 	var toolImg = [];
 	var toolImgMod = [];
 	
-	for (var i = 0;i < 11; i++)
+	for (var i = 0;i < 5; i++)
 	{
 		toolImg[i] = new ImageSurface({
                         content:'./content/ipad.png',
@@ -352,6 +367,17 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
 	toolImg[3].setContent('./content/ipad.png');
 	toolImg[4].setContent('./content/ipad.png');
     
+	
+	eventHandlerB.on('createNewWebSite',function(){
+		CurrentContext.add(webEditorMod).add(webEditor);
+		webEditorMod.setTransform(
+			Transform.rotateX(0),
+			{duration:1000, curve: Easing.linear}
+			);
+		toolBackgroundMod.setTransform(Transform.rotateX(0)
+		,{duration:1000,curve: Easing.linear});
+		});
+			
 
 });
 	

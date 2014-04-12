@@ -321,20 +321,29 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
 		});
 		webEditor.add(toolImgMod[i]).add(toolImg[i]);
 	}
-
 	
+	toolImg[0].on('click',function(){
+		//fix me//
+	});
+	toolImg[1].on('click',function(){
+		//fix me//
+	});	
+	toolImg[2].on('click',function(){
+		//fix me//
+	});	
+	toolImg[3].on('click',function(){
+		//fix me//
+	});	
+	toolImg[4].on('click',function(){
+		//fix me//
+	});
 	
 	toolImg[0].setContent('./content/ipad.png');
 	toolImg[1].setContent('./content/ipad.png');
 	toolImg[2].setContent('./content/ipad.png');
 	toolImg[3].setContent('./content/ipad.png');
 	toolImg[4].setContent('./content/ipad.png');
-	toolImg[5].setContent('./content/ipad.png');
-	toolImg[6].setContent('./content/ipad.png');
-	toolImg[7].setContent('./content/ipad.png');
-	toolImg[8].setContent('./content/ipad.png');
-	toolImg[9].setContent('./content/ipad.png');
-	toolImg[10].setContent('./content/ipad.png');
+
 	
 
 	

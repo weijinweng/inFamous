@@ -237,8 +237,8 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
     
 
 //Deck animation in iPad
-var surfaces = [];
-var myLayout = new Deck({
+	var surfaces = [];
+	var myLayout = new Deck({
         itemSpacing: 10,
         transition: {
             method: 'spring',
@@ -273,8 +273,9 @@ var myLayout = new Deck({
     iPadContentObj.add(containerModifier).add(myLayout); 
     //socket and server interaction
         
-
-    //webeditor code
+		
+		
+   //webeditor code//
     
     var webEditor = new ContainerSurface({
             size:[undefined,undefined],
@@ -301,9 +302,72 @@ var myLayout = new Deck({
     webEditor.add(editingTools);
     CurrentContext.add(webEditorMod).add(webEditor);
     
-});
-		
+	//Editor Tool docks
 	
+	var toolImg[];
+	var toolImgMod[];
+	
+	for (var i = 0;i < 11, i++)
+	{
+		var toolImg[i] = new ImageSurface({
+                        content:'./content/ipad.png',
+                        properties:{
+                        },
+                        size:[80,80]
+          });
+		toolImgMod[i] = new Modifier({
+			Transform: transform.translate(0,80*i,1)
+		});
+		webEditor.add(toolImgMod[i]).add(toolImg[i]);
+	}
+
+	
+	
+	toolImg[0].setContent('./content/ipad.png');
+	toolImg[1].setContent('./content/ipad.png');
+	toolImg[2].setContent('./content/ipad.png');
+	toolImg[3].setContent('./content/ipad.png');
+	toolImg[4].setContent('./content/ipad.png');
+	toolImg[5].setContent('./content/ipad.png');
+	toolImg[6].setContent('./content/ipad.png');
+	toolImg[7].setContent('./content/ipad.png');
+	toolImg[8].setContent('./content/ipad.png');
+	toolImg[9].setContent('./content/ipad.png');
+	toolImg[10].setContent('./content/ipad.png');
+	
+
+	
+	
+	
+	
+	//Tool code//
+	var funEditor = new ContainerSurface({
+			size: [undefined, undefined],
+	});
+	
+	var funEditorMod = new Modifier({
+		origin:[1,0]
+	});
+	
+	var functionTools = new View({
+	});
+	
+	var funBackGround = new Surfaces({
+		size:[80,undefined],
+		properties:
+		{
+			backgroundColor:'1db1d4',
+			color: 'white',
+			textAlign: 'center',
+			lineHeight: '20px'
+		}
+	});
+	
+	functionTools.add(funBackGround);
+	funEditor.add(functionTools);
+	CurrentContext.add(funEditorMod).add(funEditor);
+
+});
 	
 	
 	

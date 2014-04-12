@@ -351,15 +351,6 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
 	toolImg[2].setContent('./content/ipad.png');
 	toolImg[3].setContent('./content/ipad.png');
 	toolImg[4].setContent('./content/ipad.png');
-
-	
-
-	
-	
-	
-	
-	//Tool code//
-
     
 
 });

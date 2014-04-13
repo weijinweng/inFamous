@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
   // choose your test here
-  var socket = io.connect('http://localhost:8080');
+
   var Engine = require('famous/core/Engine');
   var Surface = require("famous/core/Surface");
   var View = require('famous/core/View');
@@ -235,9 +235,6 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
     });
     
     
-    websiteSubmitButton.on('click', function(e){
-        socket.emit('websiteCreation', websiteName.getValue());
-    });
 
 //Deck animation in iPad
 var surfaces = [];
@@ -276,19 +273,7 @@ var myLayout = new Deck({
     iPadContentObj.add(containerModifier).add(myLayout); 
     //socket and server interaction
         
-        socket.on('creationSuccess',function()
-                  {
 
-                      navbarPos.setOrigin(
-                          [0.5,-1],
-                          {duration:1000, curve: Easing.outBouce});
-                      logoPos.setOrigin(
-                          [0.5,-1],
-                          {duration:1000, curve: Easing.outBouce});
-                      buttonMod.setOrigin(
-                          [1,-1],
-                          {duration:1000, curve: Easing.outBounce});
-                  });
     //webeditor code
     
     var webEditor = new ContainerSurface({

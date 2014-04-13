@@ -163,7 +163,7 @@ define(function(require, exports, module) {
         if(websiteName.getValue() !== "")
         {
             alert('hi');
-            webEditorMod.setOrigin([0,0],{duration:1000,curve:Easing.inElastic});
+            webEditorMod.setOrigin([0,0],{duration:1000,curve:Easing.inBounce});
         }
     });
 
@@ -287,7 +287,7 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
    //webeditor code//
     
     var webEditor = new ContainerSurface({
-            size:[CurrentContext.size()[0],CurrentContext.size()[1]],
+            size:[CurrentContext.getSize()[0],CurrentContext.getSize()[1]],
     });
     
     var webEditorMod = new Modifier({

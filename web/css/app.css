@@ -45,3 +45,11 @@ html {
 	border-color:#e04848;
 	
 }
+.blue-toolbar
+{
+	background-color:#1db1d4;
+}
+.blue-toolbar:hover
+{
+	background-color:#34bfe8;
+}

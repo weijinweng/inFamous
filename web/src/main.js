@@ -292,7 +292,17 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
 		
 		
    //webeditor code//
+    var browser = new ContainerSurface({
+                    classes:['io'],
+                    properties:
+                    {
+                        backgroundColor:'white'
+                    }
+    });
     
+    var browserMod = new Modifier({
+                    origin:[-1,-1]
+    });
     var webEditor = new ContainerSurface({
             size:[CurrentContext.getSize()[0],CurrentContext.getSize()[1]],
     });
@@ -305,15 +315,15 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
     });
 	
 	var webPosMod = new Modifier({
-		transform: Transform.translate(140,0,1)
+		transform: Transform.translate(-80,0,1)
 	});
 	
 	var webEditorMod = new Modifier({
-		transform: Transform.rotateX(Math.PI)
+		transform: Transform.translate(-80,0,1)
 	});
     
     var toolsBackground = new Surface({
-                    size:[80, undefined],
+                    size:[120, undefined],
                     properties:
                     {
                         backgroundColor:'#1db1d4',
@@ -322,8 +332,48 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
                         lineHeight:'20px'
                     }
     });
-    editingTools.add(webPosMod).add(toolBackgroundMod).add(toolsBackground);
+    
+    var iPhoneContainer = new ContainerSurface({
+                        size: [300, 300*2.10822],
+                        properties:
+                        {
+                            backgroundColor:'white'
+                        }
+    });
+    
+    var iPhoneContainerPos = new Modifier({
+                    origin:[0.5,0.5]
+    });
+    var iPhoneImg = new ImageSurface({
+                    size:[300, 300*2.10822],
+                    classes: ['hi'],
+                    content:"./content/iphone.png",
+    });
+    
+    
+    
+    var iPhoneScreen = new ContainerSurface({
+                            size:[255,260*1.61],
+                            classes: ['hi'],
+                            properties:{
+                                backgroundColor:'white'
+                            }
+    });
+    
+    var iPhonePos = new Modifier({
+                    transform:Transform.translate(25,105,1)
+    });
+    editingTools.add(webPosMod).add(toolsBackground);
     webEditor.add(editingTools);
+    browser.add(iPhoneContainerPos).add(iPhoneContainer);
+    
+    iPhoneContainer.add(iPhonePos).add(iPhoneScreen);
+    iPhoneContainer.add(iPhoneImg);
+    webEditor.add(browserMod).add(browser);
+    
+
+    
+    
    
     
 	//Editor Tool docks
@@ -335,6 +385,7 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
 	{
 		toolImg[i] = new ImageSurface({
                         content:'./content/ipad.png',
+                        classes:['blue-toolbar'],
                         properties:{
                         },
                         size:[80,80]
@@ -361,22 +412,27 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
 		//fix me//
 	});
 	
-	toolImg[0].setContent('./content/ipad.png');
-	toolImg[1].setContent('./content/ipad.png');
-	toolImg[2].setContent('./content/ipad.png');
-	toolImg[3].setContent('./content/ipad.png');
-	toolImg[4].setContent('./content/ipad.png');
+	toolImg[0].setContent('./content/div.png');
+	toolImg[1].setContent('./content/animate.png');
+	toolImg[2].setContent('./content/add.png');
+	toolImg[3].setContent('./content/code.png');
+	toolImg[4].setContent('./content/preview.png');
     
-	
+
+    
 	eventHandlerB.on('createNewWebSite',function(){
 		CurrentContext.add(webEditorMod).add(webEditor);
 		webEditorMod.setTransform(
-			Transform.rotateX(0),
-			{duration:1000, curve: Easing.linear}
+			Transform.translate(0,0,1),
+			{duration:1000, curve: Easing.outElastic}
 			);
-		toolBackgroundMod.setTransform(Transform.rotateX(0)
-		,{duration:1000,curve: Easing.linear});
+		webPosMod.setTransform(Transform.translate(-40,0,1)
+		,{duration:1000,curve: Easing.outElastic});
+        browserMod.setOrigin(
+            [0.5,0.5],
+            {duration:1000,curve: Easing.outElastic});
 		});
+    
 			
 
 });

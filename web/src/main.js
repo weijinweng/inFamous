@@ -232,6 +232,7 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
         iPadImg.setSize([CurrentContext.getSize()[1]/1.3*0.7,CurrentContext.getSize()[1]/1.3]);
         iPadContentObj.setSize([CurrentContext.getSize()[1]/1.6*0.75,CurrentContext.getSize()[1]/1.65]);
         iPadContainer.setSize([CurrentContext.getSize()[1]/1.3*0.7,CurrentContext.getSize()[1]/1.3]);
+        webEditor.setSize([CurrentContext.size()[0],CurrentContext.size()[1]]);
     });
     
     
@@ -278,11 +279,11 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
    //webeditor code//
     
     var webEditor = new ContainerSurface({
-            size:[undefined,undefined],
+            size:[CurrentContext.size()[0],CurrentContext.size()[1]],
     });
     
     var webEditorMod = new Modifier({
-        origin:[0,0],
+        origin:[-1,0]
     });
 
     var editingTools = new View({
@@ -298,25 +299,25 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
                         lineHeight:'20px'
                     }
     });
-    editingTools.add(toolsBackGround);
+    editingTools.add(webEditorMod).add(toolsBackGround);
     webEditor.add(editingTools);
     CurrentContext.add(webEditorMod).add(webEditor);
     
 	//Editor Tool docks
 	
-	var toolImg[];
-	var toolImgMod[];
+	var toolImg = [];
+	var toolImgMod = [];
 	
-	for (var i = 0;i < 11, i++)
+	for (var i = 0;i < 11; i++)
 	{
-		var toolImg[i] = new ImageSurface({
+		toolImg[i] = new ImageSurface({
                         content:'./content/ipad.png',
                         properties:{
                         },
                         size:[80,80]
           });
 		toolImgMod[i] = new Modifier({
-			Transform: transform.translate(0,80*i,1)
+			transform: Transform.translate(0,80*i,1)
 		});
 		webEditor.add(toolImgMod[i]).add(toolImg[i]);
 	}
@@ -341,31 +342,8 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
 	
 	
 	//Tool code//
-	var funEditor = new ContainerSurface({
-			size: [undefined, undefined],
-	});
-	
-	var funEditorMod = new Modifier({
-		origin:[1,0]
-	});
-	
-	var functionTools = new View({
-	});
-	
-	var funBackGround = new Surfaces({
-		size:[80,undefined],
-		properties:
-		{
-			backgroundColor:'1db1d4',
-			color: 'white',
-			textAlign: 'center',
-			lineHeight: '20px'
-		}
-	});
-	
-	functionTools.add(funBackGround);
-	funEditor.add(functionTools);
-	CurrentContext.add(funEditorMod).add(funEditor);
+
+    
 
 });
 	

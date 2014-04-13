@@ -278,7 +278,16 @@ var myLayout = new Deck({
         
         socket.on('creationSuccess',function()
                   {
-                      body.show(webEditor);
+
+                      navbarPos.setOrigin(
+                          [0.5,-1],
+                          {duration:1000, curve: Easing.outBouce});
+                      logoPos.setOrigin(
+                          [0.5,-1],
+                          {duration:1000, curve: Easing.outBouce});
+                      buttonMod.setOrigin(
+                          [1,-1],
+                          {duration:1000, curve: Easing.outBounce});
                   });
     //webeditor code
     
@@ -286,6 +295,10 @@ var myLayout = new Deck({
             size:[undefined,undefined],
     });
     
+    var webEditorMod = new Modifier({
+        origin:[0,0],
+    });
+
     var editingTools = new View({
     });
     
@@ -301,6 +314,8 @@ var myLayout = new Deck({
     });
     editingTools.add(toolsBackGround);
     webEditor.add(editingTools);
+    CurrentContext.add(webEditorMod).add(webEditor);
+    
 });
 		
 	

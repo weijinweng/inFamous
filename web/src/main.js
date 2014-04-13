@@ -16,6 +16,7 @@ define(function(require, exports, module) {
   var ImageSurface = require('famous/surfaces/ImageSurface');
   var Transitionable = require('famous/transitions/Transitionable');
   var SpringTransition = require('famous/transitions/SpringTransition');
+    var FastClick = require('famous/inputs/FastClick');
   Transitionable.registerMethod('spring', SpringTransition);
   
   var CurrentContext = Engine.createContext();
@@ -158,6 +159,13 @@ define(function(require, exports, module) {
     });
     
 
+    websiteSubmitButton.on('click',function(e){
+        if(websiteName.getValue() !== "")
+        {
+            alert('hi');
+            webEditorMod.setOrigin([0,0],{duration:1000,curve:Easing.inElastic});
+        }
+    });
 
     
     var iPadContainerMod = new Modifier({
@@ -232,7 +240,7 @@ accountButton.setProperties({backgroundColor:'#34bfe0'});
         iPadImg.setSize([CurrentContext.getSize()[1]/1.3*0.7,CurrentContext.getSize()[1]/1.3]);
         iPadContentObj.setSize([CurrentContext.getSize()[1]/1.6*0.75,CurrentContext.getSize()[1]/1.65]);
         iPadContainer.setSize([CurrentContext.getSize()[1]/1.3*0.7,CurrentContext.getSize()[1]/1.3]);
-        webEditor.setSize([CurrentContext.size()[0],CurrentContext.size()[1]]);
+        webEditor.setSize([CurrentContext.getSize()[0],CurrentContext.getSize()[1]]);
     });
     
     

@@ -30,7 +30,8 @@ define(function(require, exports, module) {
             delete potentialClicks[touch.identifier];
         }
     });
-    window.addEventListener('touchend', function(event) {
+    window.addEventListener('touchend', function (event) {
+        alert('hi');
         var currTime = Date.now();
         for (var i = 0; i < event.changedTouches.length; i++) {
             var touch = event.changedTouches[i];
